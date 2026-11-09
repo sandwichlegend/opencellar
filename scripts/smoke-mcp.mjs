@@ -186,6 +186,12 @@ async function main() {
   for (const name of PUBLISHED) check(names.includes(name), `published: ${name}`);
   for (const name of AGENT_ONLY) check(!names.includes(name), `absent: ${name}`);
 
+  const resources = await rpc(endpoint, 5, "resources/list", {});
+  const skillUris = (resources.result?.resources ?? []).map((resource) => resource.uri);
+  for (const skill of ["identify-wine", "cellar-cleanup"]) {
+    check(skillUris.includes(`skill://${skill}/SKILL.md`), `skill published: ${skill}`);
+  }
+
   const listing = await rpc(endpoint, 3, "tools/call", { name: "list_cellar", arguments: {} });
   const structured = listing.result?.structuredContent;
   check(listing.result?.isError !== true, "tools/call list_cellar succeeded");
@@ -194,7 +200,8 @@ async function main() {
     structured?.rows?.some((row) => row.producer === "Château Musar" && row.year === 2016 && row.count >= 1),
     "list_cellar includes the seeded Château Musar 2016",
   );
-  console.log(`list_cellar structuredContent: ${JSON.stringify({ ...structured, rows: structured?.rows?.slice(0, 2) })}`);
+  const musar = structured?.rows?.find((row) => row.producer === "Château Musar");
+  console.log(`list_cellar structuredContent: ${JSON.stringify({ status: structured?.status, vintages: structured?.vintages, bottles: structured?.bottles, rows: musar ? [musar] : [] })}`);
 
   const blocked = await rpc(endpoint, 4, "tools/call", {
     name: "add_bottles",
