@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.eve/
+.output/
+.vercel/
+.convex/
+dist/
+coverage/
+*.log
+.DS_Store
