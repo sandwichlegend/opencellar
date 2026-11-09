@@ -6,6 +6,8 @@ export type BottleState =
 
 export type BottleStatus = BottleState["status"];
 
+export const BOTTLE_STATUSES: readonly BottleStatus[] = ["cellar", "consumed", "gifted", "lost"];
+
 export type BottleEvent =
   | { type: "consume"; at: string }
   | { type: "gift"; at: string }
