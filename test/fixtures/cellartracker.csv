@@ -1,0 +1,9 @@
+﻿iInventory,Barcode,Location,Bin,Size,Currency,Price,StoreName,PurchaseDate,Vintage,Wine,Country,Region,SubRegion,Appellation,Producer,Type,Color,Category,Varietal,MasterVarietal,Designation,Vineyard,BeginConsume,EndConsume
+1001,0101,Basement,A1,750ml,USD,55.00,K&L Wine Merchants,3/14/2023,2016,Château Musar,Lebanon,Bekaa Valley,Unknown,Bekaa Valley,Château Musar,Red,Red,Dry,Red Blend,Red Blend,Unknown,Unknown,2024,2040
+1002,0102,Basement,A1,750ml,USD,55.00,K&L Wine Merchants,3/14/2023,2016,Château Musar,Lebanon,Bekaa Valley,Unknown,Bekaa Valley,Château Musar,Red,Red,Dry,Red Blend,Red Blend,Unknown,Unknown,2024,2040
+1003,0103,Basement,B2,1.5L,EUR,180.00,Lavinia,11/2/2022,2015,Domaine Tempier Bandol Cuvée Cabassaou,France,Provence,Unknown,Bandol,Domaine Tempier,Red,Red,Dry,Mourvèdre,Mourvèdre,Cuvée Cabassaou,Unknown,2025,2045
+1004,0104,Fridge,,750ml,USD,48.50,Flatiron Wines,1/5/2024,1001,Krug Grande Cuvée,France,Champagne,Unknown,Champagne,Krug,White - Sparkling,White,Sparkling,Champagne Blend,Champagne Blend,Grande Cuvée,Unknown,Unknown,Unknown
+1005,0105,Basement,C3,750ml,USD,32.00,,,2019,"Dönnhoff Oberhäuser Brücke Riesling Spätlese",Germany,Nahe,Unknown,Nahe,Dönnhoff,White,White,Sweet/Dessert,Riesling,Riesling,Spätlese,Oberhäuser Brücke,2022,2050
+1006,,Basement,C3,375ml,USD,40.00,,,2017,"Château d'Yquem",France,Bordeaux,Sauternais,Sauternes,Château d'Yquem,White - Sweet/Dessert,White,Sweet/Dessert,Sémillon-Sauvignon Blanc Blend,Sémillon-Sauvignon Blanc Blend,Unknown,Unknown,2030,2070
+1007,0107,Basement,A2,750ml,USD,28.00,"Astor Wines, NYC",6/1/2024,2021,Domaine Tempier Bandol Rosé,France,Provence,Unknown,Bandol,Domaine Tempier,Rosé,Rosé,Dry,Mourvèdre,Mourvèdre,Unknown,Unknown,2022,2026
+1008,0108,Fridge,,750ml,USD,24.00,,,2022,Gut Oggau Atanasius,Austria,Burgenland,Unknown,Burgenland,Gut Oggau,White,Amber,Dry,Zweigelt,Zweigelt,Atanasius,Unknown,,
