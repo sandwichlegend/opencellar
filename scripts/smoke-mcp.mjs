@@ -87,17 +87,17 @@ async function convexReachable(url) {
 }
 
 function convexEnv(args) {
-  return execFileSync("npx", ["convex", "env", ...args], { encoding: "utf8", env: process.env }).trim();
+  return execFileSync("pnpm", ["exec", "convex", "env", ...args], { encoding: "utf8", env: process.env }).trim();
 }
 
 async function ensureConvex() {
   const fileEnv = readDotEnv(".env.local");
   const url = process.env.CONVEX_URL ?? fileEnv.CONVEX_URL;
-  if (!url) throw new Error("CONVEX_URL is not set. Run `npx convex dev --once` first.");
+  if (!url) throw new Error("CONVEX_URL is not set. Run `pnpm exec convex dev --once` first.");
   const up = await convexReachable(url).catch(() => false);
   if (!up) {
     console.log(`starting local Convex backend for ${url}`);
-    const convex = start("convex", "npx", ["convex", "dev", "--tail-logs", "disable"], { CONVEX_AGENT_MODE: "anonymous" });
+    const convex = start("convex", "pnpm", ["exec", "convex", "dev", "--tail-logs", "disable"], { CONVEX_AGENT_MODE: "anonymous" });
     await waitFor("Convex backend", () => convexReachable(url), 180_000).catch((error) => {
       console.error(convex.log.join(""));
       throw error;
@@ -154,7 +154,7 @@ async function main() {
     const port = await freePort();
     base = `http://127.0.0.1:${port}`;
     console.log(`starting eve dev on ${base}`);
-    const eve = start("eve", "npx", ["eve", "dev", "--no-ui", "--port", String(port)], {
+    const eve = start("eve", "pnpm", ["exec", "eve", "dev", "--no-ui", "--port", String(port)], {
       CONVEX_URL: convex.url,
       OPENCELLAR_API_KEY: convex.apiKey,
     });

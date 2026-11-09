@@ -29,21 +29,21 @@ test/              vitest suites (convex-test and unit)
 You need Node.js 24 or newer.
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 1. Convex
 
 Pick one.
 
-- **Local, no account.** Run `CONVEX_AGENT_MODE=anonymous npx convex dev`. It starts a local backend and writes `CONVEX_URL` to `.env.local`.
-- **Convex cloud.** Run `npx convex dev` and sign in. Use `npx convex deploy` for production.
-- **Self-hosted Convex.** Run the open-source backend with Docker, then set `CONVEX_SELF_HOSTED_URL` and `CONVEX_SELF_HOSTED_ADMIN_KEY` before `npx convex deploy`. See the Convex self-hosting guide.
+- **Local, no account.** Run `CONVEX_AGENT_MODE=anonymous pnpm exec convex dev`. It starts a local backend and writes `CONVEX_URL` to `.env.local`.
+- **Convex cloud.** Run `pnpm exec convex dev` and sign in. Use `pnpm exec convex deploy` for production.
+- **Self-hosted Convex.** Run the open-source backend with Docker, then set `CONVEX_SELF_HOSTED_URL` and `CONVEX_SELF_HOSTED_ADMIN_KEY` before `pnpm exec convex deploy`. See the Convex self-hosting guide.
 
 Then set the API key on the deployment:
 
 ```bash
-npx convex env set OPENCELLAR_API_KEY "$(openssl rand -hex 24)"
+pnpm exec convex env set OPENCELLAR_API_KEY "$(openssl rand -hex 24)"
 ```
 
 ### 2. Environment
@@ -64,12 +64,12 @@ The agent reads these variables. `.env.example` lists them.
 ### 4. Run and deploy eve
 
 ```bash
-npx eve dev              # local server and terminal UI on port 2000
-npx eve build            # production build in .output/
-PORT=3000 npx eve start --host 0.0.0.0
+pnpm exec eve dev              # local server and terminal UI on port 2000
+pnpm exec eve build            # production build in .output/
+PORT=3000 pnpm exec eve start --host 0.0.0.0
 ```
 
-For Vercel, run `npx eve deploy`. For other hosts, see eve's self-hosting guide in `node_modules/eve/docs/guides/deployment/self-hosting/`. Forward both `/eve/` and `/.well-known/workflow/` through your proxy.
+For Vercel, run `pnpm exec eve deploy`. For other hosts, see eve's self-hosting guide in `node_modules/eve/docs/guides/deployment/self-hosting/`. Forward both `/eve/` and `/.well-known/workflow/` through your proxy.
 
 ### 5. Connect an MCP client
 
@@ -103,7 +103,7 @@ The channel publishes the agent's skills and two kinds of tool.
 | `update_vintage`  | Enrich a vintage. Agent estimates never replace the user's values.   |
 | `create_location` | Create a storage location.                                           |
 
-The boundary is structural. eve's MCP channel publishes root tools that have `execute`. It never publishes tools from a dynamic resolver. The agent tools all come from one `defineDynamic` resolver in `agent/tools/catalog_writes.ts`. `npm run smoke:mcp` checks this over the wire.
+The boundary is structural. eve's MCP channel publishes root tools that have `execute`. It never publishes tools from a dynamic resolver. The agent tools all come from one `defineDynamic` resolver in `agent/tools/catalog_writes.ts`. `pnpm smoke:mcp` checks this over the wire.
 
 ## Import from CellarTracker
 
@@ -120,9 +120,9 @@ Each row's idempotency key is `ct:<iInventory>`. Rows without one use a content 
 ## Development
 
 ```bash
-npm run check      # tsc, vitest, then the no-comments check
-npm run smoke:mcp  # starts local Convex and eve dev, then checks the MCP surface
-npx eve eval       # runs the evals; needs a model key
+pnpm check      # tsc, vitest, then the no-comments check
+pnpm smoke:mcp  # starts local Convex and eve dev, then checks the MCP surface
+pnpm exec eve eval       # runs the evals; needs a model key
 ```
 
 The codebase has no comments. `scripts/check-no-comments.mjs` uses the TypeScript parser to enforce that, so `//` inside a string or URL is fine.

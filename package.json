@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p convex/tsconfig.json",
     "test": "vitest run",
     "check:comments": "node scripts/check-no-comments.mjs",
-    "check": "npm run typecheck && npm run test && npm run check:comments",
+    "check": "pnpm typecheck && pnpm test && pnpm check:comments",
     "smoke:mcp": "node scripts/smoke-mcp.mjs"
   },
   "repository": {
@@ -31,9 +31,11 @@
     "@types/node": "^26.6.6",
     "convex-test": "^0.0.67",
     "typescript": "^5.9.3",
+    "vite": "8.3.6",
     "vitest": "^5.1.0"
   },
   "allowScripts": {
     "esbuild@0.27.0": true
-  }
+  },
+  "packageManager": "pnpm@12.15.0"
 }
